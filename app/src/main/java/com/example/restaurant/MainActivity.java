@@ -8,11 +8,12 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     //这个我的服务器地址，我这边每一次的启动，地址都会改变，所以以变量形式使用
-    public static String HostAddrs = "http://v2uth2.natappfree.cc";
+    public static String HostAddrs = "http://fp4s9q.natappfree.cc";
     public SendRequest getDataFromServe;
 
     private Button btn1;
@@ -49,8 +50,13 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getDataFromServe.setHandler(mainHandler);
                 //地址
-                getDataFromServe.setUrl(HostAddrs + "/test3");
+                try {
+                    getDataFromServe.setUrl(HostAddrs + "/user/test4");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 //安卓handle接收消息标识，可以使任意的整数
                 getDataFromServe.setWhat(0);
                 //get还是post请求
@@ -66,6 +72,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

@@ -20,8 +20,10 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,18 +35,32 @@ public class SendRequest implements Runnable {
     //参数列表
     private HashMap<String, String> hashMapParam;
     private String method;
+    private Handler handler;
+
+    public void setUrl(String url) throws UnsupportedEncodingException {
+        this.url = url;
+
+    }
+
+    public void setWhat(int what) {
+        this.what = what;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setHashMapParam(HashMap<String, String> hashMapParam) {
+        this.hashMapParam = hashMapParam;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
 
     public SendRequest() {
     }
 
-    public SendRequest(String method) {
-        this.method = method;
-    }
-
-    public SendRequest(HashMap<String, String> hashMapParam, String method) {
-        this.hashMapParam = hashMapParam;
-        this.method = method;
-    }
 
     //post请求
     public void sendPostRequest() {
@@ -69,8 +85,6 @@ public class SendRequest implements Runnable {
                 Bundle bundle = new Bundle();
                 bundle.putString("data", dataString);
                 message.setData(bundle);
-                Handler handler = MainActivity.mainHandler;
-
                 message.what = this.what;
                 handler.sendMessage(message);
                 this.hashMapParam = null;
@@ -114,7 +128,6 @@ public class SendRequest implements Runnable {
                 Bundle bundle = new Bundle();
                 bundle.putString("data", dataString);
                 message.setData(bundle);
-                Handler handler = MainActivity.mainHandler;
 
                 message.what = this.what;
                 handler.sendMessage(message);
@@ -128,22 +141,6 @@ public class SendRequest implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public void setWhat(int what) {
-        this.what = what;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public void setHashMapParam(HashMap<String, String> hashMapParam) {
-        this.hashMapParam = hashMapParam;
     }
 
     public void startRequest() {
