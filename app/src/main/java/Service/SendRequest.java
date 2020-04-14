@@ -37,7 +37,7 @@ public class SendRequest implements Runnable {
     private String method;
     private Handler handler;
 
-    public void setUrl(String url)  {
+    public void setUrl(String url) {
         this.url = url;
 
     }
@@ -86,7 +86,7 @@ public class SendRequest implements Runnable {
                 bundle.putString("data", dataString);
                 message.setData(bundle);
                 message.what = this.what;
-                handler.sendMessage(message);
+                this.handler.sendMessage(message);
                 this.hashMapParam = null;
                 System.out.println("第一手数据" + dataString);
             }
@@ -128,10 +128,8 @@ public class SendRequest implements Runnable {
                 Bundle bundle = new Bundle();
                 bundle.putString("data", dataString);
                 message.setData(bundle);
-
                 message.what = this.what;
-                handler.sendMessage(message);
-
+                this.handler.sendMessage(message);
                 System.out.println("第一手数据" + dataString);
             }
         } catch (URISyntaxException e) {

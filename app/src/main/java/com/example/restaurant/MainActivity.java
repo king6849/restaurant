@@ -62,12 +62,11 @@ public class MainActivity extends AppCompatActivity {
         //一下是栗子
         btn1 = findViewById(R.id.btn1);
         getDataFromServe = new SendRequest();
-
+        getDataFromServe.setHandler(mainHandler);
         //这是向服务器请求数据的例子，看懂了你们就删了他
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDataFromServe.setHandler(mainHandler);
 
                 //地址
                 getDataFromServe.setUrl(HostAddrs + "/user/test3");
