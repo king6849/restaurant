@@ -37,7 +37,7 @@ public class SendRequest implements Runnable {
     private String method;
     private Handler handler;
 
-    public void setUrl(String url) throws UnsupportedEncodingException {
+    public void setUrl(String url)  {
         this.url = url;
 
     }

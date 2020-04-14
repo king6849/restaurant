@@ -52,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getDataFromServe.setHandler(mainHandler);
                 //地址
-                try {
-                    getDataFromServe.setUrl(HostAddrs + "/user/test4");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                getDataFromServe.setUrl(HostAddrs + "/user/test4");
                 //安卓handle接收消息标识，可以使任意的整数
                 getDataFromServe.setWhat(0);
                 //get还是post请求
