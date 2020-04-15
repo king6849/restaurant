@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 public class loginMain extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 //    public static final String HostAddrs = "http://192.168.43.167:8081";
-    public static final String HostAddrs = "http://sskm8r.natappfree.cc";
+    public static final String HostAddrs = "http://4waeq4.natappfree.cc";
     private SendRequest sendRequest;
     private DataConvert dataConvert;
 
